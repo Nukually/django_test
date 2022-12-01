@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+    <h1 style="color: #66CCFF">用户输入：</h1>
+    <form action="/index/" method="post">
+        {% csrf_token %}
+        用户名：<input type="text" name="username" /><br />
+        密码：<input type="password" name="password" /><br />
+        <input type="submit" value="提交" />
+    </form>
+
+    <h1>用户展示：</h1>
+        <table border="1">
+            <thead>
+                <tr>用户名</tr>
+                <tr>密码</tr>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                <tr>
+                    <td>{{ item.user }}</td>
+                    <td>{{ item.pwd }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+</body>
+</html>
